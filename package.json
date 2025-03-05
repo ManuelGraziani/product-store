@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon backend/server.js",
     "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
-    "start": "node backend/server.js"
+    "start": "node backend/server.js",
+    "test": "mocha ./backend/tests/*.spec.js"
   },
   "type": "module",
   "keywords": [],
