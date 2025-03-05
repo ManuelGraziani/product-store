@@ -1,9 +1,12 @@
 import { expect } from "chai"
-import { getProduct } from "../controllers/product.controller"
+import request from "supertest"
+import app from "../server.js"
 
-describe('Test / route', () => {
+describe('Test /api/products/ route', () => {
     it('should return all products', async () => {
-        const products = await getProduct()
-        expect(products).to.equal({success: true})
+        const res = await request(app).get('/api/products');
+        expect(res.status).to.equal(200)
+        expect(res.body).to.have.property("success", true)
+        expect(res.body).to.have.property("data").that.is.an("array")
     })
 })
