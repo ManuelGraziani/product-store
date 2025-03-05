@@ -10,3 +10,15 @@ describe('Test /api/products/ route', () => {
         expect(res.body).to.have.property("data").that.is.an("array")
     })
 })
+
+describe('Test /api/products/ post route', () => {
+    it('should return the new product', async () => {
+        const payload = {name: "test",
+            price: "1",
+            image: "url",}
+        const res = await request(app).post('/api/products').send(payload);
+        expect(res.status).to.equal(201)
+        expect(res.body).to.have.property("success", true)
+        expect(res.body).to.have.property("data").that.is.an("object")
+    })
+})
